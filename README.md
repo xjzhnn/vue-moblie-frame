@@ -1,2 +1,19 @@
-# vue-moblie-frame
-这个一个vue的移动端脚手架
+# vueiframe1
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
