@@ -1,5 +1,92 @@
 /**app.wxss**/
-.border-t,
+/* 初始化 */
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}
+body{font-size:12px;} 
+dl,ul,ol,menu,li{list-style:none} /* 重置类表前导符号为onne,menu在HTML5中有效 */
+
+textarea{resize:none}
+button{border:0 none;background-color:transparent;cursor:pointer} /* 重置表单button按钮效果 */
+input::-moz-focus-inner{border: 0; padding: 0;}
+
+/* 标题元素样式清除, 让标题都自定义, 适应多个系统应用 */
+h1,h2,h3,h4,h5,h6{ font-size: 100%;font-weight: normal;	}
+a:link {}/* 未访问的链接 */
+a:visited {}/* 已访问的链接 */
+a:hover {}/* 鼠标移动到链接上 */
+a:active {}/* 选定的链接 */
+del,ins,a{text-decoration:none;}
+a:hover,a:active,a:focus{ text-decoration:none;} /* 取消a标签点击后的虚线框 */
+
+
+
+/* 全部边框*/
+.border-all{
+	position: relative;
+}
+.border-all:after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+
+/* 上下边框 */
+.border-b,.border-t {
+	position: relative;
+}
+
+.border-b:after,.border-t:before {
+	pointer-events: none;
+	position: absolute;
+	height: 1px;
+	background: #000;
+	content: "";
+	left: 0;
+	right: 0;
+}
+/* 上border */
+.border-t:before{
+   top: 0;	
+}
+/* 下border */
+.border-b:after{
+   bottom: 0;	
+}
+
+@media (-webkit-device-pixel-ratio:2) {
+	.border-b:after,.border-t:before {
+		-webkit-transform: scaleY(.5);
+		transform: scaleY(.5);
+	}
+	/* 全部边框 */
+	.border-all:after{
+		width: 200%;
+		height: 200%;
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+		-webkit-transform-origin: top left;
+	}
+}
+
+@media (-webkit-device-pixel-ratio:3) {
+	.border-b:after,.border-t:before {
+		-webkit-transform: scaleY(.3333);
+		transform: scaleY(.3333);
+	}
+	/* 全部边框 */
+	.border-all:after{
+		width: 300%;
+		height: 300%;
+		-webkit-transform: scale(0.3333);
+		transform: scale(0.3333);
+		-webkit-transform-origin: top left;
+	}
+}
+
+/* .border-t,
 .border-b,
 .border-l,
 .border-r,
@@ -127,102 +214,110 @@
 		-webkit-transform: scale(.3333);
 		transform: scale(.3333)
 	}
-}
+} */
 /* 箭头封装 */
 .arrow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 /* 伪类元素 */
 
 .arrow::after {
-    content: "";
-    width: 20rpx;
-    height: 20rpx;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    transform: rotate(45deg);
+	content: "";
+	width: 20rpx;
+	height: 20rpx;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	transform: rotate(45deg);
 }
 
 /* 竖线封装2 */
-.b2{
-    position: relative;
+.b2 {
+	position: relative;
 }
+
 .b2::before {
-    position: absolute;
-    content: "";
-    width: 1rpx;
-    height: 30rpx;
-    background-color: #ddd;
-    left:10rpx;
-    top:12rpx;
+	position: absolute;
+	content: "";
+	width: 1rpx;
+	height: 30rpx;
+	background-color: #ddd;
+	left: 10rpx;
+	top: 12rpx;
 }
-.ac{
+
+.ac {
 	text-align: center;
 }
-.inline-block{
+
+.inline-block {
 	display: inline-block;
 }
-.text-ellipsis{
-	overflow:hidden;
-	text-overflow:ellipsis;
-	white-space:nowrap;
+
+.text-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
+
 /* 封装箭头样式 */
 
 /* 父元素 */
-.full-width{
+.full-width {
 	width: 100%;
 }
-.full-height{
+
+.full-height {
 	height: 100%;
 }
+
 .arrow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 /* 伪类元素 */
 
 .arrow::after {
-    content: "";
-    width: 15rpx;
-    height: 15rpx;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    transform: rotate(45deg);
+	content: "";
+	width: 15rpx;
+	height: 15rpx;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	transform: rotate(45deg);
 }
+
 /* 加载更多 */
 
 .loadmore {
-    color: #888;
-    font-size: 30rpx;
-    line-height: 100rpx;
-    text-align: center;
+	color: #888;
+	font-size: 30rpx;
+	line-height: 100rpx;
+	text-align: center;
 }
 
 .loadmore.loading::before {
-    content: '';
-    width: 40rpx;
-    height: 40rpx;
-    margin-top: -10rpx;
-    margin-right: 10rpx;
-    display: inline-block;
-    vertical-align: middle;
-    animation: loading 1s steps(12) infinite;
-    background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTlFOUU5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTMwKSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iIzk4OTY5NyIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMDUuOTggNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjOUI5OTlBIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0EzQTFBMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2NSA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNBQkE5QUEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDU4LjY2IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0IyQjJCMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjQkFCOEI5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDMkMwQzEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1MCA0NS45OCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDQkNCQ0IiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCA0MS4zNCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNEMkQyRDIiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0RBREFEQSIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNjAgMjQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTJFMkUyIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiLz48L3N2Zz4=) no-repeat;
-    background-size: 100%;
+	content: '';
+	width: 40rpx;
+	height: 40rpx;
+	margin-top: -10rpx;
+	margin-right: 10rpx;
+	display: inline-block;
+	vertical-align: middle;
+	animation: loading 1s steps(12) infinite;
+	background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTlFOUU5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTMwKSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iIzk4OTY5NyIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMDUuOTggNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjOUI5OTlBIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0EzQTFBMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2NSA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNBQkE5QUEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDU4LjY2IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0IyQjJCMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjQkFCOEI5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDMkMwQzEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1MCA0NS45OCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDQkNCQ0IiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCA0MS4zNCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNEMkQyRDIiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0RBREFEQSIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNjAgMjQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTJFMkUyIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiLz48L3N2Zz4=) no-repeat;
+	background-size: 100%;
 }
 
 @keyframes loading {
-    from {
-        transform: rotate(0deg);
-    }
+	from {
+		transform: rotate(0deg);
+	}
 
-    to {
-        transform: rotate(-360deg);
-    }
+	to {
+		transform: rotate(-360deg);
+	}
 }
