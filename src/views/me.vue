@@ -6,11 +6,12 @@
 </template>
 
 <script>
-	export default{
-		methods:{
-			goSelf(){
+	export default {
+		name: 'Me',
+		methods: {
+			goSelf() {
 				this.$router.push({
-					path:'/me/self'
+					path: '/me/self'
 				})
 			}
 		}
